@@ -1,0 +1,12 @@
+models/
+wav2lip_master/
+store/*
+!store/.gitkeep
+.env
+*.pyx
+casy/
+courses/
+__pycache__/
+files/
+row_data/*
+*.pdf

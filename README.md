@@ -57,12 +57,17 @@ pip install -r requirements.txt
 4. Rename .env.example to .env and add the secret keys of 
     - openai
 
-5. To Start The GUI APP
+
+** to run the app you have 2 options **
+
+1. To Start The Chat GUI APP
 ```shell
 chainlit run app.py -w
 ```
 
-6. To Start The FastAPI APP
+** OR **
+
+2. To Start The FastAPI APP
 ```shell
 uvicorn main:app --port 8080
 ```

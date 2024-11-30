@@ -7,7 +7,7 @@ store/*
 casy/
 courses/
 __pycache__/
-files/
+files/*
 row_data/*
 chainlit.md
 .files

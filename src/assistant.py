@@ -20,7 +20,7 @@ class Assistant:
     def get_the_prompt(self, question):
         results = self.g_vars['dp'].max_marginal_relevance_search(
             question, k=1)
-        template = self.g_vars['config']['prompts']['course_propmt']
+        template = self.g_vars['config']['prompts']['system_propmt']
         context = create_context(results)
         history = create_history(self.g_vars['memory'].chat_memory.messages)
 

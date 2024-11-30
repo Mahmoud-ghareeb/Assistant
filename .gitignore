@@ -9,3 +9,6 @@ courses/
 __pycache__/
 files/
 row_data/*
+chainlit.md
+.files
+.chainlit

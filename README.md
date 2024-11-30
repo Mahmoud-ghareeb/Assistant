@@ -1,5 +1,37 @@
 # Assistant
 
+## Overview
+
+This application allows users to interact with a chatbot powered by a custom assistant. It uses **Chainlit** for the chat interface, **OpenAI API** for processing, and provides functionality for processing PDF files. Users can upload a PDF file, and the assistant will process its content, embed it for memory, store it in vector DB and respond to user messages based on the file content.
+
+## Features
+
+- **File Upload**: Users can upload a PDF file that the assistant will process.
+- **Text Embedding & Memory**: The assistant processes the content of the uploaded file and embeds it into memory for future reference.
+- **Real-time Chat**: The assistant can answer questions based on the contents of the uploaded file.
+- **Streaming Responses**: The assistant streams responses token by token for a dynamic chat experience.
+
+## Project Structure
+
+```
+/project-root
+    |── configs
+    │   ├── config.default.yaml    # Contains configuration settings (e.g., system propmt)
+    ├── /src
+    │   ├── /assistant.py          # Assistant main class
+    │   ├── /schema.py            # Contains message schema definitions
+    │   ├── /embedding.py         # Embedding logic, splitting text and creating vector DB
+    │   ├── /args.py              # Contains the Arguments
+    │   ├── /memory.py            # Logic for file handling the memory
+    ├── /files                    # Directory to store uploaded files
+    ├── /main.py                  # contain fastspi api endpoint
+    ├── /app.py                   # contain the chainlit app logic
+    ├── /requirements.txt         # Project dependencies
+    └── /README.md                # This file
+    └── /test_main.ipynb          # contains the logic of calling FastAPI endpoits
+
+```
+
 ### Installation Guide
 
 1. Clone the repo
@@ -25,7 +57,12 @@ pip install -r requirements.txt
 4. Rename .env.example to .env and add the secret keys of 
     - openai
 
-5. To run FastAPI Start the app
+5. To Start The GUI APP
+```shell
+chainlit run app.py -w
+```
+
+6. To Start The FastAPI APP
 ```shell
 uvicorn main:app --port 8080
 ```

@@ -58,14 +58,16 @@ pip install -r requirements.txt
     - openai
 
 
-** to run the app you have 2 options **
+### Running The APP
+
+to run the app you have 2 options
 
 1. To Start The Chat GUI APP
 ```shell
 chainlit run app.py -w
 ```
 
-** OR **
+**OR**
 
 2. To Start The FastAPI APP
 ```shell

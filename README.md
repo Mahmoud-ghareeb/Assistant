@@ -16,19 +16,18 @@ This application allows users to interact with a chatbot powered by a custom ass
 ```
 /project-root
     |── configs
-    │   ├── config.default.yaml    # Contains configuration settings (e.g., system propmt)
-    ├── /src
+    │   ├── config.default.yaml  # Contains configuration settings (e.g., system propmt)
+    |── files                    # Directory to store uploaded files
+    │   ├── pdf files to test the app 
+    ├── /src  
     │   ├── /assistant.py          # Assistant main class
     │   ├── /schema.py            # Contains message schema definitions
     │   ├── /embedding.py         # Embedding logic, splitting text and creating vector DB
     │   ├── /args.py              # Contains the Arguments
     │   ├── /memory.py            # Logic for file handling the memory
-    ├── /files                    # Directory to store uploaded files
-    ├── /main.py                  # contain fastspi api endpoint
     ├── /app.py                   # contain the chainlit app logic
     ├── /requirements.txt         # Project dependencies
     └── /README.md                # This file
-    └── /test_main.ipynb          # contains the logic of calling FastAPI endpoits
 
 ```
 

@@ -53,11 +53,13 @@ conda activate assistant
 pip install -r requirements.txt
 ```
 
-4. Rename .env.example to .env and add the secret keys of 
-    - openai
+4. Rename .env.example to .env and add the secret key of openai
+```shell
+cp .env.example .env
+```
 
 
-### Running The APP
+### Run The APP
 
 To Start The Chat GUI
 ```shell

@@ -3,7 +3,7 @@ from langchain.memory import ConversationBufferWindowMemory
 
 
 def create_memory(k: int):
-    return ConversationBufferWindowMemory(k=1, return_messages=False)
+    return ConversationBufferWindowMemory(k=k, return_messages=False)
 
 
 def create_history(documents: List):
@@ -21,7 +21,6 @@ def create_context(documents: List):
     context = ""
     sources = set()
     for i in documents:
-        print(i)
         context += i.page_content + "\n"
         sources.add(i.metadata["source"])
 

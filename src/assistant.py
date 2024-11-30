@@ -24,7 +24,7 @@ class Assistant:
         template = self.g_vars['config']['prompts']['system_propmt']
         context, sources = create_context(results)
         history = create_history(self.g_vars['memory'].chat_memory.messages)
-
+        
         new_template = template.format(
             context=context,
             history=history,
@@ -36,8 +36,6 @@ class Assistant:
         )
         
         self.sources = sources
-        
-        print(results)
 
         return prompt
 
@@ -69,6 +67,5 @@ class Assistant:
                 
         yield f"\n\n **the source of the data is {self.sources}**"
 
-        self.g_vars['memory'].chat_memory.messages = []
         self.g_vars['memory'].save_context(
             {"input": question}, {"output": res})

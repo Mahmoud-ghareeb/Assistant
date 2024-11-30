@@ -17,7 +17,7 @@ args = Args()
 async def start_chat():
     files = None
     
-    embeddings = encode(model_id=args.model_id['multilingual-e5-base'], device="cpu", use_open_ai=True)
+    embeddings = encode(model_id="", device="cpu", use_open_ai=True)
     memory = create_memory(args.k)
     config = yaml.load(open('configs/config.default.yaml', 'r'), Loader=yaml.FullLoader)
 
@@ -28,7 +28,7 @@ async def start_chat():
 
     while files == None:
         files = await cl.AskFileMessage(
-            content="Please upload a text file to begin!", accept=["application/pdf"], max_size_mb=20, max_files=5
+            content="Please upload a text file to begin!", accept=["application/pdf"], max_size_mb=50, max_files=5
         ).send()
         
     hash_text = hashlib.sha1(files[0].name.encode("UTF-8")).hexdigest()
@@ -56,9 +56,5 @@ async def main(message: cl.Message):
     for part in stream:
         if token := part or "":
             await msg.stream_token(token)
-            
-    # await cl.Message(
-    #     content=f"the source of the data is {assistant.sources}"
-    # ).send()
     
     await msg.update()

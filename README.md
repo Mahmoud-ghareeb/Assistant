@@ -6,7 +6,7 @@ This application allows users to interact with a chatbot powered by a custom ass
 
 ## Features
 
-- **File Upload**: Users can upload a PDF file that the assistant will process.
+- **File Upload**: Users can upload a PDF files that the assistant will process.
 - **Text Embedding & Memory**: The assistant processes the content of the uploaded file and embeds it into memory for future reference.
 - **Real-time Chat**: The assistant can answer questions based on the contents of the uploaded file.
 - **Streaming Responses**: The assistant streams responses token by token for a dynamic chat experience.
@@ -18,7 +18,7 @@ This application allows users to interact with a chatbot powered by a custom ass
     |── configs
     │   ├── config.default.yaml  # Contains configuration settings (e.g., system propmt)
     |── files                    # Directory to store uploaded files
-    │   ├── pdf files to test the app 
+    │   ├── PDF files to test the app 
     ├── /src  
     │   ├── /assistant.py          # Assistant main class
     │   ├── /schema.py            # Contains message schema definitions

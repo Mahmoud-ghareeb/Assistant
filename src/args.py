@@ -4,7 +4,7 @@ from typing import ClassVar, Dict
 
 @dataclass
 class Args:
-    k: int = 1
+    k: int = 2
     device: str = "cpu"
     model_id: ClassVar[dict[str, str]] = {
         "bert-base-multilingual-uncased": "google-bert/bert-base-multilingual-uncased",

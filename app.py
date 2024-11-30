@@ -28,21 +28,21 @@ async def start_chat():
 
     while files == None:
         files = await cl.AskFileMessage(
-            content="Please upload a text file to begin!", accept=["application/pdf"]
+            content="Please upload a text file to begin!", accept=["application/pdf"], max_size_mb=20, max_files=5
         ).send()
-
-    text_file = files[0]
-    shutil.copy(text_file.path, f"files/{text_file.name}")
-    
-    file_location = f"files/{text_file.name}"
-
-    hash_text = hashlib.sha1(text_file.name.encode("UTF-8")).hexdigest()
+        
+    hash_text = hashlib.sha1(files[0].name.encode("UTF-8")).hexdigest()
+    locations = []
+    for file in files:
+        shutil.copy(file.path, f"files/{file.name}")
+        file_location = f"files/{file.name}"
+        locations.append(file_location)
 
     assistant.g_vars['dp'] = load_and_embedd(
-        file_location, assistant.g_vars['embedding'], hash_text)
+        locations, assistant.g_vars['embedding'], hash_text)
     
     await cl.Message(
-        content=f"`{text_file.name}` uploaded"
+        content=f"`files uploaded"
     ).send()
 
 
@@ -56,5 +56,9 @@ async def main(message: cl.Message):
     for part in stream:
         if token := part or "":
             await msg.stream_token(token)
+            
+    # await cl.Message(
+    #     content=f"the source of the data is {assistant.sources}"
+    # ).send()
     
     await msg.update()

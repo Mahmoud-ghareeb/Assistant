@@ -69,8 +69,9 @@ chainlit run app.py -w
 
 **OR**
 
-
 2. To Start The FastAPI APP
 ```shell
 uvicorn main:app --port 8080
 ```
+
+

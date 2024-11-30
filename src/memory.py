@@ -19,7 +19,10 @@ def create_history(documents: List):
 
 def create_context(documents: List):
     context = ""
+    sources = set()
     for i in documents:
+        print(i)
         context += i.page_content + "\n"
+        sources.add(i.metadata["source"])
 
-    return context
+    return context, sources

@@ -54,28 +54,32 @@ def encode(model_id="", device="", use_open_ai=False):
         return HuggingFaceEmbeddings(model_name=model_id, model_kwargs={"device": device})
 
 
-def load_and_embedd(file_path, embeddings, name, is_json=False):
+def load_and_embedd(file_paths, embeddings, name, is_json=False):
 
-    if file_path.endswith('.pdf'):
-        documents = load_pdf(file_path)
-        splitted_txt = splitter(documents)
-    elif file_path.endswith('.docs'):
-        documents = read_docx(file_path)
-        splitted_txt = splitter(documents)
-    else:
-        return "Not supported"
+    docs = []
+    for file_path in file_paths:
+        if file_path.endswith('.pdf'):
+            documents = load_pdf(file_path)
+            splitted_txt = splitter(documents)
+        elif file_path.endswith('.docs'):
+            documents = read_docx(file_path)
+            splitted_txt = splitter(documents)
+        else:
+            continue
+        
+        docs.extend(splitted_txt)
 
     client = chromadb.PersistentClient(path='store')
 
     try:
         client.get_collection(name=name)
         print('allready exist')
-        vector_db = Chroma(client=client, collection_name=name,
-                           embedding_function=embeddings)
+        vector_db = Chroma(client=client, collection_name=name, embedding_function=embeddings)
+        
     except:
         client.get_or_create_collection(name=name)
         vector_db = Chroma.from_documents(
-            documents=splitted_txt,
+            documents=docs,
             embedding=embeddings,
             client=client,
             collection_name=name

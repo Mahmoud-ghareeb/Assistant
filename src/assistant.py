@@ -19,9 +19,10 @@ class Assistant:
 
     def get_the_prompt(self, question):
         results = self.g_vars['dp'].max_marginal_relevance_search(
-            question, k=1)
+            question, k=1, fetch_metadata=True)
+        
         template = self.g_vars['config']['prompts']['system_propmt']
-        context = create_context(results)
+        context, sources = create_context(results)
         history = create_history(self.g_vars['memory'].chat_memory.messages)
 
         new_template = template.format(
@@ -33,12 +34,15 @@ class Assistant:
             input_variables=["context", "history", "question"],
             template=new_template
         )
+        
+        self.sources = sources
+        
+        print(results)
 
         return prompt
 
     def stream_text(self, question):
         prompt = self.get_the_prompt(question)
-        print(prompt)
         return self.openai_llm(prompt, question)
 
     def openai_llm(self, prompt, question):
@@ -62,6 +66,8 @@ class Assistant:
                 res += txt
 
                 yield txt
+                
+        yield f"\n\n **the source of the data is {self.sources}**"
 
         self.g_vars['memory'].chat_memory.messages = []
         self.g_vars['memory'].save_context(

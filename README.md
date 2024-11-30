@@ -62,16 +62,9 @@ pip install -r requirements.txt
 
 to run the app you have 2 options
 
-1. To Start The Chat GUI APP
+To Start The Chat GUI APP
 ```shell
 chainlit run app.py -w
-```
-
-**OR**
-
-2. To Start The FastAPI APP
-```shell
-uvicorn main:app --port 8080
 ```
 
 

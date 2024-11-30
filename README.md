@@ -59,9 +59,7 @@ pip install -r requirements.txt
 
 ### Running The APP
 
-to run the app you have 2 options
-
-To Start The Chat GUI APP
+To Start The Chat GUI
 ```shell
 chainlit run app.py -w
 ```

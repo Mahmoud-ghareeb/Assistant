@@ -9,4 +9,3 @@ courses/
 __pycache__/
 files/
 row_data/*
-*.pdf

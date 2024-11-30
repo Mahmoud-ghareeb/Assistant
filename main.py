@@ -20,7 +20,7 @@ args = Args()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    embeddings = encode(model_id=args.model_id['multilingual-e5-base'], device="cpu", use_open_ai=False)
+    embeddings = encode(model_id="", device="cpu", use_open_ai=True)
     memory = create_memory(args.k)
     config = yaml.load(open('configs/config.default.yaml',
                        'r'), Loader=yaml.FullLoader)

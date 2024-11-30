@@ -25,7 +25,7 @@ pip install -r requirements.txt
 4. Rename .env.example to .env and add the secret keys of 
     - openai
 
-5. Start the app
+5. To run FastAPI Start the app
 ```shell
 uvicorn main:app --port 8080
 ```

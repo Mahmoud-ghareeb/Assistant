@@ -1,0 +1,3 @@
+Chatbot,timestamp
+"[{""role"": ""user"", ""metadata"": {""title"": null}, ""content"": ""Hey""}, {""role"": ""assistant"", ""metadata"": {""title"": null}, ""content"": ""Hey""}]",2024-11-25 17:50:55.569761
+"[{""role"": ""user"", ""metadata"": {""title"": null}, ""content"": ""Can you explain briefly to me what is the Python programming language?""}, {""role"": ""assistant"", ""metadata"": {""title"": null}, ""content"": ""Can you explain briefly to me what is the Python programming language?""}]",2024-11-25 17:50:55.578372
